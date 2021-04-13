@@ -1,0 +1,35 @@
+log:
+  log_dir: /mnt/sde/data/xxl/model/
+  exp_name: rnd_mix_edge_200_test
+
+model:
+  pre_train_type: my  # [moco, cls, my]
+  ckpt_dir: /mnt/sdb/xxl/code/selfSBIR_ckpt/rnd_mix_edge/ckpt_epoch_200.pth
+  save_model: True
+
+seed:
+  use: True
+  seed: 0
+
+amp:
+  use: True
+  opt_level: O1
+
+train:
+  devices: [2, 3]
+
+  using_sgd: False
+  batch_size: 32
+  learning_rate: 0.00001
+  adj_lr: True
+  epochs: 1000
+  warmup_epochs: 10
+  dataset: sketchydb # [sketchydb, shoev1, chair, shoev2]
+  photo_root: /mnt/sde/data/xxl/sketchydatabase_official_split/photo-train-all
+  sketch_root: /mnt/sde/data/xxl/sketchydatabase_official_split/sketch-triplet-train-all
+
+test:
+  test_f: 5
+  batch_size: 128
+  photo_root: /mnt/sde/data/xxl/sketchydatabase_official_split/photo-test-all
+  sketch_root: /mnt/sde/data/xxl/sketchydatabase_official_split/sketch-triplet-test-all

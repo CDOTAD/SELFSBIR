@@ -1,0 +1,35 @@
+log:
+  log_dir: /mnt/sde/data/xxl/model/
+  exp_name: rnd_mix_edge_200_test
+
+model:
+  pre_train_type: my  # [moco, cls, my]
+  ckpt_dir: /mnt/sdb/xxl/code/selfSBIR_ckpt/rnd_mix_edge/ckpt_epoch_200.pth
+  save_model: True
+
+seed:
+  use: True
+  seed: 0
+
+amp:
+  use: True
+  opt_level: O1
+
+train:
+  devices: [2, 3]
+
+  using_sgd: False
+  batch_size: 32
+  learning_rate: 0.00001
+  adj_lr: True
+  epochs: 1000
+  warmup_epochs: 10
+  dataset: chair # [sketchydb, shoev1, chair, shoev2]
+  photo_root: /mnt/sde/data/xxl/sbir_cvpr2016/sbir_cvpr2016_release/sbir_cvpr2016/chairs/train/images
+  sketch_root: /mnt/sde/data/xxl/sbir_cvpr2016/sbir_cvpr2016_release/sbir_cvpr2016/chairs/train/sketches
+
+test:
+  test_f: 1
+  batch_size: 128
+  photo_root: /mnt/sde/data/xxl/sbir_cvpr2016/sbir_cvpr2016_release/sbir_cvpr2016/chairs/test/images
+  sketch_root: /mnt/sde/data/xxl/sbir_cvpr2016/sbir_cvpr2016_release/sbir_cvpr2016/chairs/test/sketches
