@@ -1,2 +1,2 @@
 # SELFSBIR
-Cross-modal Contrastive Pre-training for Fine-grained \\Sketch-based Image Retrieval
+Boosting Fine-grained Sketch-based Image Retrieval with Self-supervised Learning
